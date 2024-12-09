@@ -1,26 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Calculator app</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
-
-
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+    <title>Frontend Mentor | Calculator App</title>
+    <link rel="stylesheet" href="css/main.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <div class="calculator">
+      <header class="calculator__header">
+        <div class="calculator__logo">
+          <h1 class="primary-heading">calc</h1>
+        </div>
+        <div class="calculator__theme-switcher"></div>
+      </header>
+      <main class="calculator__main">
+        <div class="calculator__result">
+          <label for="result" class="sr-only">Result</label>
+          <input type="text" id="result" readonly />
+        </div>
+        <div class="calculator__buttons grid">
+          <input type="button" class="calculator__btn" value="7" />
+          <input type="button" class="calculator__btn" value="8" />
+          <input type="button" class="calculator__btn" value="9" />
+          <input type="button" class="calculator__btn" value="del" />
+          <input type="button" class="calculator__btn" value="4" />
+          <input type="button" class="calculator__btn" value="5" />
+          <input type="button" class="calculator__btn" value="6" />
+          <input type="button" class="calculator__btn" value="+" />
+          <input type="button" class="calculator__btn" value="1" />
+          <input type="button" class="calculator__btn" value="2" />
+          <input type="button" class="calculator__btn" value="3" />
+          <input type="button" class="calculator__btn" value="-" />
+          <input type="button" class="calculator__btn" value="." />
+          <input type="button" class="calculator__btn" value="0" />
+          <input type="button" class="calculator__btn" value="/" />
+          <input type="button" class="calculator__btn" value="*" />
+          <input type="button" class="calculator__btn" value="reset" />
+          <input type="button" class="calculator__btn" value="=" />
+        </div>
+      </main>
+    </div>
+  </body>
 </html>
