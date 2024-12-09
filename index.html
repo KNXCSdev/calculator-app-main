@@ -3,9 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
     <title>Frontend Mentor | Calculator App</title>
     <link rel="stylesheet" href="css/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=League+Spartan:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
     <script defer src="script.js"></script>
   </head>
   <body>
@@ -14,31 +19,33 @@
         <div class="calculator__logo">
           <h1 class="primary-heading">calc</h1>
         </div>
-        <div class="calculator__theme-switcher"></div>
+        <div class="calculator__theme-switcher">
+          <span>Theme</span>
+        </div>
       </header>
       <main class="calculator__main">
         <div class="calculator__result">
-          <label for="result" class="sr-only">Result</label>
-          <input type="text" id="result" readonly />
+          <!-- <label for="result" class="sr-only">Result</label> -->
+          <input type="text" id="result" readonly value="399,981" />
         </div>
         <div class="calculator__buttons grid">
-          <input type="button" class="calculator__btn" value="7" />
-          <input type="button" class="calculator__btn" value="8" />
-          <input type="button" class="calculator__btn" value="9" />
-          <input type="button" class="calculator__btn" value="del" />
-          <input type="button" class="calculator__btn" value="4" />
-          <input type="button" class="calculator__btn" value="5" />
-          <input type="button" class="calculator__btn" value="6" />
-          <input type="button" class="calculator__btn" value="+" />
-          <input type="button" class="calculator__btn" value="1" />
-          <input type="button" class="calculator__btn" value="2" />
-          <input type="button" class="calculator__btn" value="3" />
-          <input type="button" class="calculator__btn" value="-" />
-          <input type="button" class="calculator__btn" value="." />
-          <input type="button" class="calculator__btn" value="0" />
-          <input type="button" class="calculator__btn" value="/" />
-          <input type="button" class="calculator__btn" value="*" />
-          <input type="button" class="calculator__btn" value="reset" />
+          <input type="button" class="calculator__btn calculator__number" value="7" />
+          <input type="button" class="calculator__btn calculator__number" value="8" />
+          <input type="button" class="calculator__btn calculator__number" value="9" />
+          <input type="button" class="calculator__btn" value="DEL" />
+          <input type="button" class="calculator__btn calculator__number" value="4" />
+          <input type="button" class="calculator__btn calculator__number" value="5" />
+          <input type="button" class="calculator__btn calculator__number" value="6" />
+          <input type="button" class="calculator__btn calculator__number" value="+" />
+          <input type="button" class="calculator__btn calculator__number" value="1" />
+          <input type="button" class="calculator__btn calculator__number" value="2" />
+          <input type="button" class="calculator__btn calculator__number" value="3" />
+          <input type="button" class="calculator__btn calculator__number" value="-" />
+          <input type="button" class="calculator__btn calculator__number" value="." />
+          <input type="button" class="calculator__btn calculator__number" value="0" />
+          <input type="button" class="calculator__btn calculator__number" value="/" />
+          <input type="button" class="calculator__btn calculator__number" value="x" />
+          <input type="button" class="calculator__btn" value="RESET" />
           <input type="button" class="calculator__btn" value="=" />
         </div>
       </main>

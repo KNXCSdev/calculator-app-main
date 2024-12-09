@@ -1,0 +1,144 @@
+:root {
+  --mainBackground: hsl(222, 26%, 31%);
+  --toggleBackground-keypadBackground: hsl(223, 31%, 20%);
+  --screenBackground: hsl(224, 36%, 15%);
+  --keyBackground-Del: hsl(225, 21%, 49%);
+  --keyShadow-Del: hsl(224, 28%, 35%);
+  --keyBackgroundToggle-Result: hsl(6, 63%, 50%);
+  --keyShadow-Result: hsl(6, 70%, 34%);
+  --keyBackground-Numbers: hsl(30, 25%, 89%);
+  --keyShadow-Numbers: hsl(28, 16%, 65%);
+  --numberColor: hsl(221, 14%, 31%);
+  --white: hsl(0, 0%, 100%);
+}
+:root .theme2 {
+  --mainBackground: hsl(0, 0%, 90%);
+  --toggleBackground-keypadBackground: hsl(0, 5%, 81%);
+  --screenBackground: hsl(0, 0%, 93%);
+  --keyBackground-Del: hsl(185, 42%, 37%);
+  --keyShadow-Del: hsl(185, 58%, 25%);
+  --keyBackgroundToggle-Result: hsl(25, 98%, 40%);
+  --keyShadow-Result: hsl(25, 99%, 27%);
+  --keyBackground-Numbers: hsl(45, 7%, 89%);
+  --keyShadow-Numbers: hsl(35, 11%, 61%);
+  --numberColor: hsl(60, 10%, 19%);
+  --white: hsl(0, 0%, 100%);
+}
+:root .theme3 {
+  --mainBackground: hsl(268, 75%, 9%);
+  --toggleBackground-keypadBackground: hsl(268, 71%, 12%);
+  --keyBackground-Del: hsl(281, 89%, 26%);
+  --keyShadow-Del: hsl(285, 91%, 52%);
+  --keyBackgroundToggle-Result: hsl(176, 100%, 44%);
+  --keyShadow-Result: hsl(177, 92%, 70%);
+  --keyBackground-Numbers: hsl(268, 47%, 21%);
+  --keyShadow-Numbers: hsl(290, 70%, 36%);
+  --numberColor: hsl(52, 100%, 62%);
+  --Verydarkblue: hsl(198, 20%, 13%);
+  --white: hsl(0, 0%, 100%);
+}
+
+html,
+body {
+  overflow: hidden;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  line-height: 1;
+  font-family: "League Spartan", sans-serif;
+  font-size: 4rem;
+  background-color: var(--mainBackground);
+  height: 100vh;
+}
+
+input {
+  border: none;
+  font-size: 3.2rem;
+  font-family: inherit;
+  font-weight: 700;
+  border-radius: 5px;
+  cursor: pointer;
+}
+input:active {
+  filter: brightness(1.5);
+}
+
+.primary-heading {
+  font-size: 3rem;
+  color: var(--white);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2.2rem;
+}
+
+.calculator {
+  max-width: 50rem;
+  margin: 7rem auto;
+}
+.calculator__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.calculator__result {
+  width: 100%;
+  height: 10rem;
+  border-radius: 5px;
+  margin-bottom: 2rem;
+}
+.calculator__result input {
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  padding: 3rem;
+  border: none;
+  background-color: var(--screenBackground);
+  text-align: right;
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: 700;
+  color: var(--white);
+}
+.calculator__buttons {
+  padding: 3rem;
+  background-color: var(--toggleBackground-keypadBackground);
+  border-radius: 5px;
+}
+.calculator__buttons input[value=RESET] {
+  grid-column: 1/3;
+}
+.calculator__buttons input[value=DEL],
+.calculator__buttons input[value=RESET] {
+  background-color: var(--keyBackground-Del);
+  color: var(--white);
+  box-shadow: 0 4px 0 var(--keyShadow-Del);
+}
+.calculator__buttons input[value="="] {
+  background-color: var(--keyBackgroundToggle-Result);
+  color: var(--white);
+  grid-column: 3/5;
+  box-shadow: 0 4px 0 var(--keyShadow-Result);
+}
+.calculator__number {
+  border-radius: 8px;
+  box-shadow: 0 4px 0 var(--keyShadow-Numbers);
+  color: var(--numberColor);
+}
+.calculator__btn {
+  width: 100%;
+  height: 6rem;
+}
