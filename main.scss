@@ -1,5 +1,5 @@
 :root {
-  //### Theme 3
+  //### Theme 1
   //#### Backgrounds
   --mainBackground: hsl(222, 26%, 31%);
   --toggleBackground-keypadBackground: hsl(223, 31%, 20%);
@@ -8,18 +8,22 @@
   //#### Keys
 
   --keyBackground-Del: hsl(225, 21%, 49%);
+  --keyBackground-Del-Hover: hsl(225, 21%, 59%);
   --keyShadow-Del: hsl(224, 28%, 35%);
 
   --keyBackgroundToggle-Result: hsl(6, 63%, 50%);
+  --keyBackgroundToggle-Result-Hover: hsl(6, 63%, 60%);
   --keyShadow-Result: hsl(6, 70%, 34%);
 
   --keyBackground-Numbers: hsl(30, 25%, 89%);
+  --keyBackground-Numbers-Hover: hsl(30, 25%, 109%);
   --keyShadow-Numbers: hsl(28, 16%, 65%);
 
   //#### Text
 
   --numberColor: hsl(221, 14%, 31%);
   --white: hsl(0, 0%, 100%);
+  --resultColor: hsl(0, 0%, 100%);
 
   .theme2 {
     //### Theme 2
@@ -27,23 +31,27 @@
 
     --mainBackground: hsl(0, 0%, 90%);
     --toggleBackground-keypadBackground: hsl(0, 5%, 81%);
-    --screenBackground: hsl(0, 0%, 93%);
+    --screenBackground: hsl(0, 0%, 98%);
 
     //#### Keys
 
     --keyBackground-Del: hsl(185, 42%, 37%);
+    --keyBackground-Del-Hover: hsl(185, 42%, 47%);
     --keyShadow-Del: hsl(185, 58%, 25%);
 
     --keyBackgroundToggle-Result: hsl(25, 98%, 40%);
+    --keyBackgroundToggle-Result-Hover: hsl(25, 98%, 50%);
     --keyShadow-Result: hsl(25, 99%, 27%);
 
     --keyBackground-Numbers: hsl(45, 7%, 89%);
+    --keyBackground-Numbers-Hover: hsl(45, 7%, 109%);
     --keyShadow-Numbers: hsl(35, 11%, 61%);
 
     //#### Text
 
     --numberColor: hsl(60, 10%, 19%);
     --white: hsl(0, 0%, 100%);
+    --resultColor: hsl(60, 10%, 19%);
   }
 
   .theme3 {
@@ -52,21 +60,26 @@
 
     --mainBackground: hsl(268, 75%, 9%);
     --toggleBackground-keypadBackground: hsl(268, 71%, 12%);
+    --screenBackground: hsl(268, 71%, 12%);
 
     //#### Keys
 
     --keyBackground-Del: hsl(281, 89%, 26%);
+    --keyBackground-Del-Hover: hsl(281, 89%, 36%);
     --keyShadow-Del: hsl(285, 91%, 52%);
 
     --keyBackgroundToggle-Result: hsl(176, 100%, 44%);
+    --keyBackgroundToggle-Result-Hover: hsl(176, 100%, 54%);
     --keyShadow-Result: hsl(177, 92%, 70%);
 
     --keyBackground-Numbers: hsl(268, 47%, 21%);
+    --keyBackground-Numbers-Hover: hsl(268, 47%, 31%);
     --keyShadow-Numbers: hsl(290, 70%, 36%);
 
     //#### Text
 
     --numberColor: hsl(52, 100%, 62%);
+    --resultColor: hsl(52, 100%, 62%);
     --Verydarkblue: hsl(198, 20%, 13%);
     --white: hsl(0, 0%, 100%);
   }
@@ -97,20 +110,24 @@ body {
 
 input {
   border: none;
-  font-size: 3.2rem;
+  font-size: 3.4rem;
   font-family: inherit;
   font-weight: 700;
   border-radius: 5px;
   cursor: pointer;
+}
 
-  &:active {
-    filter: brightness(1.5);
-  }
+span {
+  color: var(--resultColor);
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  font-family: inherit;
+  letter-spacing: 1px;
 }
 
 .primary-heading {
   font-size: 3rem;
-  color: var(--white);
+  color: var(--resultColor);
 }
 
 .grid {
@@ -127,8 +144,13 @@ input {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 3rem;
+  }
 
-    margin-bottom: 1rem;
+  &__theme-switcher {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
   }
 
   &__result {
@@ -136,6 +158,7 @@ input {
     height: 10rem;
     border-radius: 5px;
     margin-bottom: 2rem;
+    background-color: var(--screenBackground);
     input {
       width: 100%;
       height: 100%;
@@ -147,7 +170,7 @@ input {
       font-size: inherit;
       font-family: inherit;
       font-weight: 700;
-      color: var(--white);
+      color: var(--resultColor);
     }
   }
 
@@ -164,6 +187,11 @@ input {
       background-color: var(--keyBackground-Del);
       color: var(--white);
       box-shadow: 0 4px 0 var(--keyShadow-Del);
+      font-size: 2.8rem;
+
+      &:hover {
+        background-color: var(--keyBackground-Del-Hover);
+      }
     }
 
     input[value="="] {
@@ -171,6 +199,9 @@ input {
       color: var(--white);
       grid-column: 3/5;
       box-shadow: 0 4px 0 var(--keyShadow-Result);
+      &:hover {
+        background-color: var(--keyBackgroundToggle-Result-Hover);
+      }
     }
   }
 
@@ -178,10 +209,103 @@ input {
     border-radius: 8px;
     box-shadow: 0 4px 0 var(--keyShadow-Numbers);
     color: var(--numberColor);
+    background-color: var(--keyBackground-Numbers);
+    &:hover {
+      background-color: var(--keyBackground-Numbers-Hover);
+    }
   }
 
   &__btn {
     width: 100%;
-    height: 6rem;
+    height: 5.5rem;
   }
+}
+
+/* General Theme Switcher Styling */
+.theme-switcher {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  color: white;
+  gap: 1rem;
+  margin-top: -2.9rem;
+}
+
+/* Labels for Themes */
+.theme-labels {
+  display: flex;
+  justify-content: space-between;
+  width: 8rem;
+}
+
+.theme-labels span {
+  font-size: 1.4rem;
+  font-family: inherit;
+}
+
+/* Input Range Styling */
+input[type="range"] {
+  appearance: none;
+  width: 10rem;
+  height: 2rem;
+  background: var(--toggleBackground-keypadBackground);
+  border-radius: 2rem;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Range Track */
+input[type="range"]::-webkit-slider-runnable-track {
+  background: var(--toggleBackground-keypadBackground);
+  height: 3rem;
+  border-radius: 2rem;
+}
+
+input[type="range"]::-moz-range-track {
+  background: var(--toggleBackground-keypadBackground);
+  height: 3rem;
+  border-radius: 2rem;
+}
+
+input[type="range"]::-ms-track {
+  background: var(--toggleBackground-keypadBackground);
+  height: 3rem;
+  border-radius: 2rem;
+}
+
+/* Range Thumb (Knob) */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 2.2rem;
+  height: 2.2rem;
+  background: var(--keyBackgroundToggle-Result);
+  border-radius: 50%;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+  transform: translate(4px, 4px); /* Moves dot a bit lower */
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 2.2rem;
+  height: 2.2rem;
+  background: var(--keyBackgroundToggle-Result-Hover);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type="range"]::-ms-thumb {
+  width: 2.2rem;
+  height: 2.2rem;
+  background: var(--keyBackgroundToggle-Result-Hover);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Thumb Hover Effect */
+input[type="range"]::-webkit-slider-thumb:hover {
+  background: var(--keyBackgroundToggle-Result-Hover);
 }
