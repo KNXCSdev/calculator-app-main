@@ -1,3 +1,4 @@
+"use strict";
 const themeRange = document.getElementById("calculator__theme-range");
 const calculatorButtons = document.querySelector(".calculator__buttons");
 const result = document.querySelector("#result");
@@ -18,42 +19,75 @@ class Calculator {
   }
 
   _calculateValue(e) {
-    const clicked = e.target.closest(".calculator__btn")?.value;
+    const clicked = e.target.closest(".calculator__btn").value;
     if (!clicked) return;
-    if (clicked === "DEL") {
-      this.currentInput = this.currentInput.slice(0, -1);
+
+    if (clicked === "SUBMIT") {
+      this._showDisplay();
     } else if (clicked === "RESET") {
-      this.currentInput = "";
-    } else if (clicked === "=") {
-      this._evaluateExpression();
-    } else if (this._isOperator(clicked)) {
-      this._handleOperator(clicked);
+      this._resetDisplay();
+    } else if (clicked === "DELETE") {
+      this._deleteValue();
     } else {
+      this._checkError();
       this.currentInput += clicked;
+      this._checkCorrect();
+      result.value = this.currentInput;
+    }
+  }
+
+  _showDisplay() {
+    try {
+      // Evaluate the expression safely
+      const evaluation = eval(this.currentInput);
+
+      // Handle undefined or invalid results (e.g., divide by zero)
+      if (evaluation === undefined || isNaN(evaluation)) {
+        result.value = "Error";
+        this.currentInput = "";
+      } else {
+        result.value = evaluation;
+        this.currentInput = evaluation.toString();
+      }
+    } catch (error) {
+      result.value = "Error";
+      this.currentInput = "";
+    }
+  }
+
+  _resetDisplay() {
+    result.value = "";
+    this.currentInput = "";
+  }
+
+  _deleteValue() {
+    result.value = result.value.slice(0, -1);
+    this.currentInput = result.value;
+  }
+
+  _checkCorrect() {
+    // Regex patterns
+
+    // Prevent input starting with * or /
+    if (/^[*/]/.test(this.currentInput)) {
+      this.currentInput = this.currentInput.slice(1);
     }
 
-    console.log(this.currentInput);
+    const invalidPattern = /[+\-*./]{2,}(?!\d)/;
+    if (invalidPattern.test(this.currentInput)) {
+      this.currentInput = this.currentInput.replace(
+        invalidPattern,
+        `${this.currentInput.slice(-1)}`
+      );
+    }
+
+    // Update the display with sanitized input
     result.value = this.currentInput;
   }
 
-  // Check if the clicked value is an operator
-  _isOperator(value) {
-    return ["+", "-", "x", "/", "."].includes(value);
-  }
-
-  // operator logic to prevent consecutive operators
-  _handleOperator(operator) {
-    const lastChar = this.currentInput.slice(-1);
-    if (this._isOperator(lastChar)) return; // Prevent consecutive operators
-    this.currentInput += operator;
-  }
-
-  _evaluateExpression() {
-    try {
-      // Replace "x" with "*" and evaluate the expression
-      this.currentInput = eval(this.currentInput.replace(/x/g, "*")).toString();
-    } catch (error) {
-      return;
+  _checkError() {
+    if (this.currentInput.startsWith("E")) {
+      this.currentInput = "";
     }
   }
 }
